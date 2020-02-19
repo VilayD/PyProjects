@@ -1,3 +1,32 @@
+# !/usr/bin/python
+"""
+    #!/usr/bin/python
+    It's a recommended way, proposed in documentation:
+    2.2.2. Executable Python Scripts.
+    In a Unix-like operating system, the program loader
+    takes the presence of these two characters as an
+    indication that the file is a script, and tries to
+    execute that script using the interpreter specified
+    by the rest of the first line in the file.
+"""
+# -*- coding: utf-8 -*-
+"""
+    # -*- coding: utf-8 -*-
+    This sets the charset if it is present on the first two lines of the file.
+    this is Syntax to declare the encoding of a Python source file. It's discussed
+    in PEP 0263 - Defining Python Source Code Encodings.
+    https://www.python.org/dev/peps/pep-0263/
+"""
+##
+# Python Ver:   3.8.0
+#
+# Author:       Phanvilay Davis
+#
+# Purpose:      Tkinter GUI module to create a search directory.
+#
+# Tested OS:    This code was written and tested to work with Windows 10.
+
+
 import os
 from tkinter import *
 from tkinter import messagebox
@@ -11,22 +40,34 @@ class MainWindow():
         self.master = master
         master.title("Check files")
 
+        #define master frame configuration
         self.master = master
         self.master.minsize(500,190) #(Height, Width)
         self.master.maxsize(500,190)
+        
+        #This CenterWindow method will center our app on the user's screen
         check_file_func.center_window(self,500,190)
         
+        # This protocol method is a tkinter built-in method to catch if 
+        # the user clicks the upper corner, "X" on Windows OS.
         self.master.protocol("WM_DELETE_WINDOW", lambda: check_file_func.ask_quit(self))
 
+        """
+        Define the default tkinter widgets and their initial
+        configuration and place them using the grid geometry.
+        Use grid as it offers the best control
+        for pacing the widgets.
+        """
         self.btn_browse1 = tk.Button(self.master,width=15,height=1,text='Browse Folder...',command=lambda:var2.set(filedialog.askopenfilename()))
         self.btn_browse1.grid(row=0,column=0,columnspan=1,padx=(15,0),pady=(45,10),sticky=N+W)      
         self.lbl_filename = tk.Label(self.master,width=15,height=1,text='File Name:')
         self.lbl_filename.grid(row=1,column=0,columnspan=1,padx=(15,0),pady=(5,10),sticky=N+W)
 
+        # Creating variables to assign the StringVar for file path.
         var1 = StringVar()
         var2 = StringVar()
         
-        
+        # Create a entry box and add the file path from the askdirectory.
         self.txt_browse1 = tk.Entry(self.master,textvariable=var1,width=50)
         self.txt_browse1.grid(row=0,column=1,rowspan=1,columnspan=1,padx=(25,0),pady=(45,10),sticky=N+E+W)
         self.txt_box = tk.Entry(self.master,textvariable=var2,width=50)
