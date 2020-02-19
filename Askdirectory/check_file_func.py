@@ -1,10 +1,22 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# Python Ver:   3.8.0
+#
+# Author:       Phanvilay Davis
+#
+# Purpose:      Tkinter GUI module and functions to create gui with filedialog.askdirectory 
+#               
+#
+# Tested OS:    This code was written and tested to work with Windows 10.
+
+
 import os
 from tkinter import *
 import tkinter as tk
 from tkinter import filedialog
 
-import check_file_main
-import test1
+import file_dialog
 
 def center_window(self, w, h): # pass in the tkinter frame (master) reference and the w and h
     # get user's screen width and height
@@ -17,7 +29,7 @@ def center_window(self, w, h): # pass in the tkinter frame (master) reference an
     return centerGeo    
     
         
-def ask_quit(self):
+def ask_quit(self): # Catches if use wants to really close app.
     messagebox.askokcancel("Quit", "Do you want to leave the program?")
     # This closes app
     self.master.destroy()
