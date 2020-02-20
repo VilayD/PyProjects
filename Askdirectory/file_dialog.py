@@ -52,28 +52,27 @@ class MainWindow():
         # the user clicks the upper corner, "X" on Windows OS.
         self.master.protocol("WM_DELETE_WINDOW", lambda: check_file_func.ask_quit(self))
 
+        # Creating variables to assign the StringVar for file path.
+        file = StringVar()
+        
         """
         Define the default tkinter widgets and their initial
         configuration and place them using the grid geometry.
         Use grid as it offers the best control
         for pacing the widgets.
         """
-        self.btn_browse1 = tk.Button(self.master,width=15,height=1,text='Browse Folder...',command=lambda:var2.set(filedialog.askopenfilename()))
+        self.btn_browse1 = tk.Button(self.master,width=15,height=1,text='Browse...',command=file.set(filedialog.askdirectory()))
         self.btn_browse1.grid(row=0,column=0,columnspan=1,padx=(15,0),pady=(45,10),sticky=N+W)      
-        self.lbl_filename = tk.Label(self.master,width=15,height=1,text='File Name:')
-        self.lbl_filename.grid(row=1,column=0,columnspan=1,padx=(15,0),pady=(5,10),sticky=N+W)
-
-        # Creating variables to assign the StringVar for file path.
-        var1 = StringVar()
-        var2 = StringVar()
+        self.btn_browse2 = tk.Button(self.master,width=15,height=1,text='Browse')
+        self.btn_browse2.grid(row=1,column=0,columnspan=1,padx=(15,0),pady=(5,10),sticky=N+W)
         
         # Create a entry box and add the file path from the askdirectory.
-        self.txt_browse1 = tk.Entry(self.master,textvariable=var1,width=50)
+        self.txt_browse1 = tk.Entry(self.master,textvariable=file,width=55)
         self.txt_browse1.grid(row=0,column=1,rowspan=1,columnspan=1,padx=(25,0),pady=(45,10),sticky=N+E+W)
-        self.txt_box = tk.Entry(self.master,textvariable=var2,width=50)
+        self.txt_box = tk.Entry(self.master,textvariable=file,width=55)
         self.txt_box.grid(row=1,column=1,rowspan=1,columnspan=1,padx=(25,0),pady=(5,10),sticky=N+E+W)
 
-        self.btn_ckFiles = tk.Button(self.master,width=15,height=2,text='Check for folder',command=lambda:var1.set(filedialog.askdirectory()))
+        self.btn_ckFiles = tk.Button(self.master,width=15,height=2,text='Check for folder...')
         self.btn_ckFiles.grid(row=4,column=0,columnspan=1,padx=(15,0),pady=(5,10),sticky=W)
 
         self.btn_close = tk.Button(self.master,width=15,height=2,text='Close Program',command= lambda: check_file_func.ask_quit(self))
