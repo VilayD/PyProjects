@@ -61,7 +61,7 @@ class MainWindow():
         Use grid as it offers the best control
         for pacing the widgets.
         """
-        self.btn_browse1 = tk.Button(self.master,width=15,height=1,text='Browse...',command=file.set(filedialog.askdirectory()))
+        self.btn_browse1 = tk.Button(self.master,width=15,height=1,text='Browse...',command=lambda:file.set(filedialog.askdirectory()))
         self.btn_browse1.grid(row=0,column=0,columnspan=1,padx=(15,0),pady=(45,10),sticky=N+W)      
         self.btn_browse2 = tk.Button(self.master,width=15,height=1,text='Browse')
         self.btn_browse2.grid(row=1,column=0,columnspan=1,padx=(15,0),pady=(5,10),sticky=N+W)
